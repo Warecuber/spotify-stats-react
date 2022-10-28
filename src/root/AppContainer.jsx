@@ -6,6 +6,7 @@ import useApps from "../stores/AppsStore";
 import TopSongs from "../apps/TopSongs";
 import TopArtists from "../apps/TopArtists";
 import Playlists from "../apps/Playlists";
+import LikedSongs from "../apps/LikedSongs";
 
 // Private functions
 
@@ -23,7 +24,7 @@ const SpotifyApp = () => {
 			case "Playlists":
 				return <Playlists />;
 			case "LikedSongs":
-				return <div>Liked Songs</div>;
+				return <LikedSongs />;
 		}
 	};
 
