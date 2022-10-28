@@ -1,26 +1,25 @@
 import React, { useState, useEffect } from "react";
 
 // Components/utils
-import Song from "../components/Song";
 import useUser from "../stores/UserStore";
 import apiCaller from "../utils/apiCaller";
+import Playlist from "../components/Playlist";
 
 // Private functions
 
 // Public functions
-const TopSongs = () => {
+const Playlists = () => {
 	const [userState] = useUser();
-	const [top_songs, setTopSongs] = useState([]);
+	const [playlists, setPlaylists] = useState([]);
 	const [is_loading, setIsLoading] = useState(true);
 	useEffect(() => {
-		console.log("User state in TopSongs app", userState);
 		if (userState.is_logged_in && userState.authtoken) {
 			apiCaller
-				.get("/me/top/tracks", {
+				.get("/me/playlists?limit=20&offset=0", {
 					headers: { Authorization: `Bearer ${userState.authtoken}` },
 				})
 				.then(({ data }) => {
-					setTopSongs(data.items);
+					setPlaylists(data.items);
 					setIsLoading(false);
 				})
 				.catch((err) => {
@@ -28,37 +27,18 @@ const TopSongs = () => {
 				});
 		}
 	}, []);
-	// const top_songs = [
-	// 	{
-	// 		name: "Song 1",
-	// 		artists: [{ name: "artist 1" }, { name: "artist 2" }],
-	// 	},
-	// 	{
-	// 		name: "Song 2",
-	// 		artists: [{ name: "artist 1" }],
-	// 	},
-	// 	{
-	// 		name: "Song 3",
-	// 		artists: [
-	// 			{ name: "artist 1" },
-	// 			{ name: "artist 2" },
-	// 			{ name: "artist 3" },
-	// 		],
-	// 	},
-	// 	{
-	// 		name: "Song 4",
-	// 		artists: [{ name: "artist 1" }],
-	// 	},
-	// ];
+
 	return (
 		<div>
 			{is_loading ? (
 				<div>Loading...</div>
 			) : (
-				top_songs.map((song) => <Song data={song} key={song.name} />)
+				playlists.map((playlist) => (
+					<Playlist data={playlist} key={playlist.name} />
+				))
 			)}
 		</div>
 	);
 };
 // exports
-export default TopSongs;
+export default Playlists;

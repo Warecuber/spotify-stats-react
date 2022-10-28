@@ -4,6 +4,8 @@ import React from "react";
 import useUser from "../stores/UserStore";
 import useApps from "../stores/AppsStore";
 import TopSongs from "../apps/TopSongs";
+import TopArtists from "../apps/TopArtists";
+import Playlists from "../apps/Playlists";
 
 // Private functions
 
@@ -17,9 +19,9 @@ const SpotifyApp = () => {
 			case "TopSongs":
 				return <TopSongs />;
 			case "TopArtists":
-				return <div>Top Artists</div>;
+				return <TopArtists />;
 			case "Playlists":
-				return <div>Playlists</div>;
+				return <Playlists />;
 			case "LikedSongs":
 				return <div>Liked Songs</div>;
 		}
@@ -69,7 +71,7 @@ const SpotifyApp = () => {
 					Liked Songs
 				</div>
 			</div>
-			<div className="webapp__title">
+			<div className="webapp__title font--large">
 				Welcome, {userState.name || "unknown"}
 			</div>
 			<div className="webapp__body">{getCurrentApp()}</div>
