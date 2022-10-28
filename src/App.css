@@ -1,38 +1,114 @@
-.App {
-  text-align: center;
+:root {
+	--spotify-green: #1db954;
+	--spotify-dark: #191414;
+	--spotify-white: #ffffff;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.full--width {
+	width: 100%;
+}
+.full--height {
+	height: 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* ===== */
+/* Flex */
+/* === */
+
+.flex {
+	display: flex;
+}
+.flex--horizontal {
+	flex-direction: row;
+}
+.flex--vertical {
+	flex-direction: column;
+}
+.half--width {
+	width: calc(50% - 16px);
+}
+.half--width.no--padding {
+	width: 50%;
+}
+.third--width {
+	width: calc(33.3% - 32px);
+}
+.third--width.no--padding {
+	width: 33.3%;
+}
+.fourth--width {
+	width: calc(25% - 32px);
+}
+.fourth--width.no--padding {
+	width: 25%;
+}
+.flex.center {
+	justify-content: center;
+}
+.flex.center-all {
+	justify-content: center;
+	align-items: center;
+}
+.flex.center--vertically {
+	align-items: center;
+}
+.flex.between {
+	justify-content: space-between;
+}
+.flex.around {
+	justify-content: space-around;
+}
+.flex.auto--resize > div {
+	width: 31%;
+	margin: 0 auto;
+}
+.flex.wrap {
+	flex-wrap: wrap;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+html,
+body {
+	padding: 0px;
+	margin: 0px;
+	height: 100vh;
+	font-family: sans-serif;
 }
 
-.App-link {
-  color: #61dafb;
+.header {
+	height: calc(72px - 16px);
+	background-color: var(--spotify-green);
+	position: absolute;
+	top: 0;
+	width: calc(100% - 16px);
+	left: 0;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-self: center;
+	padding: 8px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.header > * {
+	height: inherit;
+}
+
+/* ======== */
+/* Buttons */
+/* ====== */
+.button {
+	padding: 8px 24px;
+	border-radius: 24px;
+	transition: all 0.1s ease-in-out;
+	border: 2px solid;
+	font-size: 16px;
+}
+.button.is--black {
+	background-color: var(--spotify-dark);
+	color: var(--spotify-white);
+	border-color: var(--spotify-dark);
+}
+.button:hover {
+	cursor: pointer;
+	background-color: transparent;
+	color: initial;
 }
